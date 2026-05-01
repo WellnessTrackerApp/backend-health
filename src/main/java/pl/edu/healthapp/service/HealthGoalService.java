@@ -61,7 +61,7 @@ public class HealthGoalService {
     protected void deleteGoalById(String username, Long id){
         User user = userService.findByUsername(username);
 
-        HealthGoal healthGoal = healthGoalRepository.findByIdAndUserId(user.getId(), id)
+        HealthGoal healthGoal = healthGoalRepository.findByIdAndUserId(id, user.getId())
                 .orElseThrow(() -> new HealthGoalNotFoundException("Health goal " + id + " not found or does not belong to user " + user.getId()));
 
         healthGoalRepository.delete(healthGoal);

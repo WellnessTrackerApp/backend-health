@@ -12,6 +12,6 @@ import java.util.UUID;
 @Repository
 public interface HealthGoalRepository extends JpaRepository<HealthGoal, Long> {
     Optional<HealthGoal> findByUserIdAndHealthGoalType(UUID userId, HealthGoalType healthGoalType);
-    Optional<HealthGoal> findByIdAndUserId(UUID id, Long userId);
+    Optional<HealthGoal> findByIdAndUserId(Long id, UUID userId);
     List<HealthGoal> findAllByUserId(UUID userId);
 }

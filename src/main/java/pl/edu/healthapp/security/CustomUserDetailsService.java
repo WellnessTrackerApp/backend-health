@@ -26,7 +26,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 
    @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        UUID uuid = UUID.fromString(userId);
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(userId);
+        } catch (IllegalArgumentException e) {
+            throw new UsernameNotFoundException("Invalid user ID format: " + userId);
+        }
 
         return new CustomUserDetails(userRepository.findById(uuid)
                 .orElseThrow(() -> new UserNotFoundException("uuid", uuid.toString())));

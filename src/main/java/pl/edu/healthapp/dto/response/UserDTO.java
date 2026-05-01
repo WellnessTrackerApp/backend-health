@@ -12,7 +12,6 @@ public record UserDTO(
         UUID id,
         String username,
         String email,
-        String password,
         OffsetDateTime birthDate,
         double height,
         double weight,

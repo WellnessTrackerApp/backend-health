@@ -82,7 +82,7 @@ public class UserService {
     private void saveEvent(EventType eventType, User user){
         String payload = UserMapper.toJSON(user);
         Event event = Event.builder()
-                .entityId(user.getId().getLeastSignificantBits())
+                .entityId(0L)
                 .eventType(eventType)
                 .createdAt(OffsetDateTime.now())
                 .payload(payload)

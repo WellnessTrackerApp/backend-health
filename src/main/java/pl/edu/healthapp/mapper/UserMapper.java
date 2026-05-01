@@ -46,7 +46,6 @@ public class UserMapper {
                             user.getId(),
                             user.getUsername(),
                             user.getEmail(),
-                            user.getPassword(),
                             user.getBirthDate(),
                             user.getHeight(),
                             user.getWeight(),
@@ -62,7 +61,7 @@ public class UserMapper {
 
     public static User toEntity(UserCreationDTO user){
         return User.builder()
-                .id(user.id() == null ? UUID.randomUUID() : user.id())
+                .id(UUID.randomUUID())
                 .username(user.username())
                 .email(user.email())
                 .password(user.password())
