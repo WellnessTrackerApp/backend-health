@@ -3,9 +3,9 @@ CREATE TABLE sleep_entries (
                        startSleep TIMESTAMP WITH TIME ZONE NOT NULL,
                        sleepEnd TIMESTAMP WITH TIME ZONE NOT NULL,
                        quality VARCHAR(50) NOT NULL,
-                       user_id BIGINT NOT NULL,
+                       user_id UUID NOT NULL,
                        CONSTRAINT sleep_user
                            FOREIGN KEY (user_id)
-                               REFERENCES users(id)
+                               REFERENCES health_users(id)
                                ON DELETE CASCADE
 );

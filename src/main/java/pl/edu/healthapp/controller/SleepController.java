@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sleep")
+@CrossOrigin(origins = "http://localhost:5173")
 public class SleepController {
     private final SleepService sleepService;
 
@@ -73,14 +74,6 @@ public class SleepController {
                             .map(SleepMapper::fromEntity)
                             .toList();
     }
-
-    /*@GetMapping("/all")
-    public List<SleepDTO> getDailySleepHistory(){
-        return sleepService.findAll()
-                .stream()
-                .map(SleepMapper::fromEntity)
-                .toList();
-    }*/
 
     @Operation(
             summary = "Get weekly sleep entries",

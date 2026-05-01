@@ -16,6 +16,7 @@ import pl.edu.healthapp.service.UserService;
 
 @RestController
 @RequestMapping("/me")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
     private final UserService userService;
 

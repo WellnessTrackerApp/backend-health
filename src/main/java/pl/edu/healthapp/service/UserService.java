@@ -41,8 +41,6 @@ public class UserService {
 
     public void deleteUser(String username){
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("username", username));
-
-        System.out.println("USER DELETED");
         userRepository.delete(user);
     }
 
@@ -68,6 +66,9 @@ public class UserService {
     public User findByUsername(String username){
         return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("username", username));
     }
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
 
     private void validateUniqueness(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
@@ -81,7 +82,7 @@ public class UserService {
     private void saveEvent(EventType eventType, User user){
         String payload = UserMapper.toJSON(user);
         Event event = Event.builder()
-                .entityId(user.getId())
+                .entityId(user.getId().getLeastSignificantBits())
                 .eventType(eventType)
                 .createdAt(OffsetDateTime.now())
                 .payload(payload)

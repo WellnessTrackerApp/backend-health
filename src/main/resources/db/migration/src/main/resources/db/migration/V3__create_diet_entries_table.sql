@@ -6,9 +6,9 @@ CREATE TABLE diet_entries (
                        carbs DOUBLE PRECISION NOT NULL,
                        fat DOUBLE PRECISION NOT NULL,
                        eaten_at TIMESTAMP WITH TIME ZONE NOT NULL,
-                       user_id BIGINT NOT NULL,
+                       user_id UUID NOT NULL,
                        CONSTRAINT diet_user
                            FOREIGN KEY (user_id)
-                               REFERENCES users(id)
+                               REFERENCES health_users(id)
                                ON DELETE CASCADE
 );

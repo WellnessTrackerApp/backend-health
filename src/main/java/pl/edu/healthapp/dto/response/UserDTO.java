@@ -6,9 +6,10 @@ import pl.edu.healthapp.model.NotificationType;
 
 import java.time.OffsetDateTime;
 import java.util.Set;
+import java.util.UUID;
 
 public record UserDTO(
-        Long id,
+        UUID id,
         String username,
         String email,
         String password,

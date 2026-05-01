@@ -7,11 +7,12 @@ import pl.edu.healthapp.model.EventType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    Optional<Event> findTopByUserIdOrderByCreatedAtDesc(Long userId);
-    Optional<Event> findTopByEventTypeAndUserIdOrderByCreatedAtDesc(EventType eventType, Long userId);
-    List<Event> findByEventTypeAndUserIdOrderByCreatedAtAsc(EventType eventType, Long userId);
+    Optional<Event> findTopByUserIdOrderByCreatedAtDesc(UUID userId);
+    Optional<Event> findTopByEventTypeAndUserIdOrderByCreatedAtDesc(EventType eventType, UUID userId);
+    List<Event> findByEventTypeAndUserIdOrderByCreatedAtAsc(EventType eventType, UUID userId);
 }

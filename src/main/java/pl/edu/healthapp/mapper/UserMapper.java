@@ -10,6 +10,7 @@ import pl.edu.healthapp.model.Notification;
 import pl.edu.healthapp.model.User;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class UserMapper {
@@ -61,6 +62,7 @@ public class UserMapper {
 
     public static User toEntity(UserCreationDTO user){
         return User.builder()
+                .id(user.id() == null ? UUID.randomUUID() : user.id())
                 .username(user.username())
                 .email(user.email())
                 .password(user.password())

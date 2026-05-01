@@ -7,10 +7,11 @@ import pl.edu.healthapp.model.HealthGoalType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface HealthGoalRepository extends JpaRepository<HealthGoal, Long> {
-    Optional<HealthGoal> findByUserIdAndHealthGoalType(Long userId, HealthGoalType healthGoalType);
-    Optional<HealthGoal> findByIdAndUserId(Long id, Long userId);
-    List<HealthGoal> findAllByUserId(Long userId);
+    Optional<HealthGoal> findByUserIdAndHealthGoalType(UUID userId, HealthGoalType healthGoalType);
+    Optional<HealthGoal> findByIdAndUserId(UUID id, Long userId);
+    List<HealthGoal> findAllByUserId(UUID userId);
 }

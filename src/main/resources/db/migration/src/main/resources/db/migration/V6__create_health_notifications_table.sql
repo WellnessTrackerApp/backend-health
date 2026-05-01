@@ -3,9 +3,9 @@ CREATE TABLE health_notifications (
                        message VARCHAR(255) NOT NULL,
                        notificationType VARCHAR(55) NOT NULL,
                        updatedAt TIMESTAMP WITH TIME ZONE NOT NULL,
-                       user_id BIGINT NOT NULL,
+                       user_id UUID NOT NULL,
                        CONSTRAINT notification_user
                            FOREIGN KEY (user_id)
-                               REFERENCES users(id)
+                               REFERENCES health_users(id)
                                ON DELETE CASCADE
 );
