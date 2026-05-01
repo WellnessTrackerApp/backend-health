@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/activities")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class ActivityController {
     private final ActivityService activityService;
 

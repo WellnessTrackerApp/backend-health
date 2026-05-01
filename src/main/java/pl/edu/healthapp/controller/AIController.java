@@ -15,6 +15,7 @@ import java.time.OffsetDateTime;
 
 @RestController
 @RequestMapping("/ai")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class AIController {
     private final AIService aiService;
 

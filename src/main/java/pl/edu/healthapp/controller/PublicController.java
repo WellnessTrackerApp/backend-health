@@ -12,10 +12,8 @@ import pl.edu.healthapp.mapper.UserMapper;
 import pl.edu.healthapp.model.User;
 import pl.edu.healthapp.service.UserService;
 
-import java.util.List;
-
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class PublicController {
     private final UserService userService;
 

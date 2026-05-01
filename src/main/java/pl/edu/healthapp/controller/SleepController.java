@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sleep")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${cors.allowed-origins}")
 public class SleepController {
     private final SleepService sleepService;
 
