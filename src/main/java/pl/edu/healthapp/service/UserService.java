@@ -66,9 +66,6 @@ public class UserService {
     public User findByUsername(String username){
         return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("username", username));
     }
-    public List<User> findAll(){
-        return userRepository.findAll();
-    }
 
     private void validateUniqueness(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
