@@ -13,7 +13,6 @@ import pl.edu.healthapp.model.User;
 import pl.edu.healthapp.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class PublicController {
     private final UserService userService;
 

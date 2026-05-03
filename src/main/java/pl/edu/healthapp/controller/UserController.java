@@ -16,7 +16,6 @@ import pl.edu.healthapp.service.UserService;
 
 @RestController
 @RequestMapping("/me")
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class UserController {
     private final UserService userService;
 

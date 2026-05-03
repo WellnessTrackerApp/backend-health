@@ -61,7 +61,7 @@ public class UserMapper {
 
     public static User toEntity(UserCreationDTO user){
         return User.builder()
-                .id(UUID.randomUUID())
+                .id(user.id())
                 .username(user.username())
                 .email(user.email())
                 .password(user.password())
