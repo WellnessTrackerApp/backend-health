@@ -5,12 +5,9 @@ import pl.edu.healthapp.dto.request.UserCreationDTO;
 import pl.edu.healthapp.dto.request.UserUpdateDTO;
 import pl.edu.healthapp.dto.response.UserDTO;
 import pl.edu.healthapp.model.Event;
-import pl.edu.healthapp.model.Gender;
 import pl.edu.healthapp.model.Notification;
 import pl.edu.healthapp.model.User;
 
-import java.time.OffsetDateTime;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class UserMapper {
@@ -39,6 +36,10 @@ public class UserMapper {
 
     public static String toJSON(User user){
         return "\"username\": \"%s\",\n\"email\": \"%s\",\n\"password\": \"%s\",\n\"birthDate\": \"%s\",\n\"height\": \"%.2f\",\n\"weight\": \"%.1f\",\n\"gender\": \"%s\"".formatted(user.getUsername(), user.getEmail(), user.getPassword(), user.getBirthDate().toString(), user.getHeight(), user.getWeight(), user.getGender().name());
+    }
+
+    public static String toString(User user){
+        return "\"id\": \"%s\",\"username\": \"%s\",\n\"email\": \"%s\",\n\"password\": \"%s\",\n\"birthDate\": \"%s\",\n\"height\": \"%.2f\",\n\"weight\": \"%.1f\",\n\"gender\": \"%s\"".formatted(user.getId().toString(), user.getUsername(), user.getEmail(), user.getPassword(), user.getBirthDate().toString(), user.getHeight(), user.getWeight(), user.getGender().name());
     }
 
     public static UserDTO fromEntity(User user){

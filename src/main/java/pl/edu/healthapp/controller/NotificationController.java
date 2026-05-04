@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notifications")
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class NotificationController {
     private final NotificationService notificationService;
 

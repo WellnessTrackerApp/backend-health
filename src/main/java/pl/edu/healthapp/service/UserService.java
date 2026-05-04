@@ -15,7 +15,6 @@ import pl.edu.healthapp.repository.EventRepository;
 import pl.edu.healthapp.repository.UserRepository;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 @Service
 public class UserService {

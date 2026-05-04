@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/diet")
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class DietController {
     private final DietService dietService;
 

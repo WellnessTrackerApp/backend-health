@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.healthapp.security.CustomUserDetails;
 import pl.edu.healthapp.service.AIService;
 
-import java.time.OffsetDateTime;
 
 
 @RestController
 @RequestMapping("/ai")
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class AIController {
     private final AIService aiService;
 

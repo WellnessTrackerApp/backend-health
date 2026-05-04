@@ -20,7 +20,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/goals")
-@CrossOrigin(origins = "${cors.allowed-origins}")
 public class HealthGoalController {
     private final HealthGoalService healthGoalService;
 

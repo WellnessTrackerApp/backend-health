@@ -10,7 +10,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public record UserCreationDTO(
-        @NotNull(message = "Userid is required")
+        @NotNull(message = "User id is required")
         UUID id,
         @NotBlank(message = "Username is required")
         String username,
