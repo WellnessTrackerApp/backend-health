@@ -38,10 +38,6 @@ public class UserMapper {
         return "\"username\": \"%s\",\n\"email\": \"%s\",\n\"password\": \"%s\",\n\"birthDate\": \"%s\",\n\"height\": \"%.2f\",\n\"weight\": \"%.1f\",\n\"gender\": \"%s\"".formatted(user.getUsername(), user.getEmail(), user.getPassword(), user.getBirthDate().toString(), user.getHeight(), user.getWeight(), user.getGender().name());
     }
 
-    public static String toString(User user){
-        return "\"id\": \"%s\",\"username\": \"%s\",\n\"email\": \"%s\",\n\"password\": \"%s\",\n\"birthDate\": \"%s\",\n\"height\": \"%.2f\",\n\"weight\": \"%.1f\",\n\"gender\": \"%s\"".formatted(user.getId().toString(), user.getUsername(), user.getEmail(), user.getPassword(), user.getBirthDate().toString(), user.getHeight(), user.getWeight(), user.getGender().name());
-    }
-
     public static UserDTO fromEntity(User user){
         return new UserDTO(
                             user.getId(),
