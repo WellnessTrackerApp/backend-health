@@ -4,8 +4,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.edu.healthapp.exception.UserNotFoundException;
 import pl.edu.healthapp.repository.UserRepository;
+
+import java.util.UUID;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -17,8 +18,17 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new CustomUserDetails(userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("username", username)));
+
+   @Override
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(userId);
+        } catch (IllegalArgumentException e) {
+            throw new UsernameNotFoundException("Invalid user ID format: " + userId);
+        }
+
+        return new CustomUserDetails(userRepository.findById(uuid)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + uuid)));
     }
 }

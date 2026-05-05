@@ -15,7 +15,6 @@ import pl.edu.healthapp.repository.EventRepository;
 import pl.edu.healthapp.repository.UserRepository;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -41,8 +40,6 @@ public class UserService {
 
     public void deleteUser(String username){
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("username", username));
-
-        System.out.println("USER DELETED");
         userRepository.delete(user);
     }
 
@@ -81,7 +78,7 @@ public class UserService {
     private void saveEvent(EventType eventType, User user){
         String payload = UserMapper.toJSON(user);
         Event event = Event.builder()
-                .entityId(user.getId())
+                .entityId(0L)
                 .eventType(eventType)
                 .createdAt(OffsetDateTime.now())
                 .payload(payload)

@@ -7,8 +7,11 @@ import jakarta.validation.constraints.PastOrPresent;
 import pl.edu.healthapp.model.Gender;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 public record UserCreationDTO(
+        @NotNull(message = "User id is required")
+        UUID id,
         @NotBlank(message = "Username is required")
         String username,
         @Email

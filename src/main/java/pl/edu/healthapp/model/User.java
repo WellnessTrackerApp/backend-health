@@ -7,9 +7,10 @@ import lombok.*;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "health_users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,8 +18,8 @@ import java.util.Set;
 @Setter
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(nullable = false, unique = true)
     private String username;

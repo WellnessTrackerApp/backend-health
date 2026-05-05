@@ -7,10 +7,11 @@ import pl.edu.healthapp.model.NotificationType;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
-    List<Notification> findAllByUserId(Long userId);
-    Optional<Notification> findByUserIdAndNotificationType(Long userId, NotificationType notificationType);
-    Optional<Notification> findByIdAndUserId(Long id, Long userId);
+    List<Notification> findAllByUserId(UUID userId);
+    Optional<Notification> findByUserIdAndNotificationType(UUID userId, NotificationType notificationType);
+    Optional<Notification> findByIdAndUserId(Long id, UUID userId);
 }

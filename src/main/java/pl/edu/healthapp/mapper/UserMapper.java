@@ -5,11 +5,9 @@ import pl.edu.healthapp.dto.request.UserCreationDTO;
 import pl.edu.healthapp.dto.request.UserUpdateDTO;
 import pl.edu.healthapp.dto.response.UserDTO;
 import pl.edu.healthapp.model.Event;
-import pl.edu.healthapp.model.Gender;
 import pl.edu.healthapp.model.Notification;
 import pl.edu.healthapp.model.User;
 
-import java.time.OffsetDateTime;
 import java.util.stream.Collectors;
 
 public class UserMapper {
@@ -45,7 +43,6 @@ public class UserMapper {
                             user.getId(),
                             user.getUsername(),
                             user.getEmail(),
-                            user.getPassword(),
                             user.getBirthDate(),
                             user.getHeight(),
                             user.getWeight(),
@@ -61,6 +58,7 @@ public class UserMapper {
 
     public static User toEntity(UserCreationDTO user){
         return User.builder()
+                .id(user.id())
                 .username(user.username())
                 .email(user.email())
                 .password(user.password())

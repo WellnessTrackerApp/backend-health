@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.healthapp.security.CustomUserDetails;
 import pl.edu.healthapp.service.AIService;
 
-import java.time.OffsetDateTime;
 
 
 @RestController

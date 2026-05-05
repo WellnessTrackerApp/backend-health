@@ -74,14 +74,6 @@ public class SleepController {
                             .toList();
     }
 
-    /*@GetMapping("/all")
-    public List<SleepDTO> getDailySleepHistory(){
-        return sleepService.findAll()
-                .stream()
-                .map(SleepMapper::fromEntity)
-                .toList();
-    }*/
-
     @Operation(
             summary = "Get weekly sleep entries",
             description = "Retrieves a list of all sleep entries ending last week added by the currently authenticated user.",

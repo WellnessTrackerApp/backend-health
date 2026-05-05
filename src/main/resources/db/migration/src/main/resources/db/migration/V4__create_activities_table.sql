@@ -4,9 +4,9 @@ CREATE TABLE activities (
                        activityType VARCHAR(50) NOT NULL,
                        durationInMinutes INT NOT NULL,
                        caloriesBurned DOUBLE PRECISION NOT NULL,
-                       user_id BIGINT NOT NULL,
+                       user_id UUID NOT NULL,
                        CONSTRAINT activity_user
                            FOREIGN KEY (user_id)
-                               REFERENCES users(id)
+                               REFERENCES health_users(id)
                                ON DELETE CASCADE
 );

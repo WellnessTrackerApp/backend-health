@@ -12,8 +12,6 @@ import pl.edu.healthapp.mapper.UserMapper;
 import pl.edu.healthapp.model.User;
 import pl.edu.healthapp.service.UserService;
 
-import java.util.List;
-
 @RestController
 public class PublicController {
     private final UserService userService;
@@ -37,13 +35,4 @@ public class PublicController {
         UserDTO userDTO = UserMapper.fromEntity(userService.registerUser(user));
         return ResponseEntity.status(HttpStatus.CREATED).body(userDTO);
     }
-
-
-    /*@GetMapping("/users")
-    public List<UserDTO> getAllUsers() {
-        return userService.findAll()
-                            .stream()
-                            .map(UserMapper::fromEntity)
-                            .toList();
-    }*/
 }
