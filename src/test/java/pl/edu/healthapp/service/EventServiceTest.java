@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import pl.edu.healthapp.model.*;
 import pl.edu.healthapp.repository.EventRepository;
@@ -122,6 +123,7 @@ class EventServiceTest {
 
     @Test
     void undoLast_validData_deletesUser() {
+        SecurityContextHolder.getContext().setAuthentication(new TestingAuthenticationToken("undoMaster", "pwd", "ROLE_USER"));
         when(userService.findByUsername("undoMaster")).thenReturn(sampleUser);
         Event lastEvent = Event.builder()
                 .id(104L)

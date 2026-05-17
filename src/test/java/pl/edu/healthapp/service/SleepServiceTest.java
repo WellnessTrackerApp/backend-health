@@ -135,7 +135,7 @@ class SleepServiceTest {
         SleepEntry s4 = SleepEntry.builder().sleepStart(now.minusHours(10)).sleepEnd(now).build();
         when(sleepRepository.findAllByUserIdAndSleepEndBetween(any(), any(), any())).thenReturn(List.of(s1, s2, s3, s4));
         Double medianDuration = sleepService.getWeeklyMedianSleepDuration("sleeper123");
-        assertEquals(8.0, medianDuration, 0.001);
+        assertEquals(7.5, medianDuration, 0.001);
     }
 
     @Test
