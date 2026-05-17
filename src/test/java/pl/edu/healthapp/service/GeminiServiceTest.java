@@ -54,14 +54,14 @@ class GeminiServiceTest {
         String username = "fitUser";
         String generatedPrompt = "prompt";
         String aiResponse = "response";
-        when(promptBuilder.advicePrompt(username)).thenReturn(generatedPrompt);
+        when(promptBuilder.advicePrompt(username, "english")).thenReturn(generatedPrompt);
         mockGeminiResponse(generatedPrompt, aiResponse);
 
-        String result = geminiService.generateWeeklyAdvice(username);
+        String result = geminiService.generateWeeklyAdvice(username, "english");
 
         assertNotNull(result);
         assertEquals(aiResponse, result);
-        verify(promptBuilder, times(1)).advicePrompt(username);
+        verify(promptBuilder, times(1)).advicePrompt(username, "english");
     }
 
     @Test
@@ -84,13 +84,13 @@ class GeminiServiceTest {
         String username = "fitUser";
         String generatedPrompt = "prompt";
         String aiResponse = "response";
-        when(promptBuilder.predictionPrompt(username)).thenReturn(generatedPrompt);
+        when(promptBuilder.predictionPrompt(username, "english")).thenReturn(generatedPrompt);
         mockGeminiResponse(generatedPrompt, aiResponse);
 
-        String result = geminiService.generateHealthPrediction(username);
+        String result = geminiService.generateHealthPrediction(username, "english");
 
         assertNotNull(result);
         assertEquals(aiResponse, result);
-        verify(promptBuilder, times(1)).predictionPrompt(username);
+        verify(promptBuilder, times(1)).predictionPrompt(username, "english");
     }
 }

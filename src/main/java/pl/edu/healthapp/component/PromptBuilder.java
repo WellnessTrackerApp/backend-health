@@ -33,12 +33,12 @@ public class PromptBuilder {
 
     public String questionPrompt(String question) {
         return """
-        You are a health assistant. Answer the following health question for the user:
+        You are a health assistant. Answer the following health question for the user(please provide response in the language of the question) :
         %s
         """.formatted(question);
     }
 
-    public String predictionPrompt(String username) {
+    public String predictionPrompt(String username, String language) {
         User user = userService.findByUsername(username);
         double userWeight = user.getWeight();
         double userHeight = user.getHeight();
@@ -79,7 +79,7 @@ public class PromptBuilder {
     Health goals and current progress for each goal of user:
     %s
 
-    Based on this data, predict health trends based on recent data.
+    Based on this data, predict health trends based on recent data. Please provide response in %s language.
     """.formatted(
                 userWeight,
                 userHeight,
@@ -90,11 +90,12 @@ public class PromptBuilder {
                 formatHistory(fats),
                 formatHistory(carbs),
                 formatActivitySummary(activities),
-                formatGoals(goalsAndProgresses)
+                formatGoals(goalsAndProgresses),
+                language
         );
     }
 
-    public String advicePrompt(String username){
+    public String advicePrompt(String username, String language){
         Map<LocalDate, Long> sleep = sleepService.getSleepDurationLast7Days(username);
         Map<LocalDate, Integer> calories = dietService.getCaloriesLast7Days(username);
         Map<LocalDate, Double> proteins = dietService.getProteinsLast7Days(username);
@@ -127,13 +128,15 @@ public class PromptBuilder {
     - assess balance between activity and calories
     - give 2–3 short recommendations
     - be supportive and motivating
+    Please provide response in %s language.
     """.formatted(
                 formatHistory(sleep),
                 formatHistory(calories),
                 formatHistory(proteins),
                 formatHistory(fats),
                 formatHistory(carbs),
-                formatActivitySummary(activities)
+                formatActivitySummary(activities),
+                language
         );
     }
 
