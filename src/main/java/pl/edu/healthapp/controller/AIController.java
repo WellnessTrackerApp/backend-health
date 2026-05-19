@@ -43,8 +43,8 @@ public class AIController {
                     @ApiResponse(responseCode = "401", description = "Unauthorized access")
             }
     )
-    @GetMapping("/ask")
-    public ResponseEntity<String> askHealthQuestion(@AuthenticationPrincipal CustomUserDetails user, @RequestParam(name = "question") String question) {
+    @PostMapping("/ask")
+    public ResponseEntity<String> askHealthQuestion(@AuthenticationPrincipal CustomUserDetails user, @RequestBody String question) {
         String answer = aiService.answerHealthQuestion(user.getUsername(), question);
         return ResponseEntity.status(HttpStatus.OK).body(answer);
     }
