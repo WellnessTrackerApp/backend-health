@@ -29,9 +29,9 @@ public class AIController {
                     @ApiResponse(responseCode = "401", description = "Unauthorized access")
             }
     )
-    @GetMapping("/advice")
-    public ResponseEntity<String> getWeeklyAdvice(@AuthenticationPrincipal CustomUserDetails user) {
-        String advice = aiService.generateWeeklyAdvice(user.getUsername());
+    @GetMapping("/advice/{language}")
+    public ResponseEntity<String> getWeeklyAdvice(@AuthenticationPrincipal CustomUserDetails user, @PathVariable String language) {
+        String advice = aiService.generateWeeklyAdvice(user.getUsername(), language);
         return ResponseEntity.status(HttpStatus.OK).body(advice);
     }
 
@@ -57,9 +57,9 @@ public class AIController {
                     @ApiResponse(responseCode = "401", description = "Unauthorized access")
             }
     )
-    @GetMapping("/prediction")
-    public ResponseEntity<String> getHealthPrediction(@AuthenticationPrincipal CustomUserDetails user){
-        String prediction = aiService.generateHealthPrediction(user.getUsername());
+    @GetMapping("/prediction/{language}")
+    public ResponseEntity<String> getHealthPrediction(@AuthenticationPrincipal CustomUserDetails user, @PathVariable String language){
+        String prediction = aiService.generateHealthPrediction(user.getUsername(), language);
         return ResponseEntity.status(HttpStatus.OK).body(prediction);
     }
 }
