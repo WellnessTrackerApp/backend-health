@@ -27,8 +27,8 @@ public class ChatGPTService implements AIService {
     }
 
     @Override
-    public String generateWeeklyAdvice(String username) {
-        String prompt = promptBuilder.advicePrompt(username);
+    public String generateWeeklyAdvice(String username, String language) {
+        String prompt = promptBuilder.advicePrompt(username, language);
         return getChatResponse(prompt);
     }
 
@@ -39,8 +39,8 @@ public class ChatGPTService implements AIService {
     }
 
     @Override
-    public String generateHealthPrediction(String username) {
-        String prompt = promptBuilder.predictionPrompt(username);
+    public String generateHealthPrediction(String username, String language) {
+        String prompt = promptBuilder.predictionPrompt(username, language);
         return getChatResponse(prompt);
     }
 

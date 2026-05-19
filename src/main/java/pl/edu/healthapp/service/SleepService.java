@@ -188,11 +188,11 @@ public class SleepService {
                 .mapToDouble(SleepEntry::durationInHours)
                 .sorted();
         return history.size() % 2 == 0 ?
-                Math.round(sortedDurations
+                sortedDurations
                         .skip(Math.max((history.size() / 2) - 1, 0))
                         .limit(2)
                         .average()
-                        .orElseThrow(() -> new SleepEntryNotFoundException("No sleep found for current user"))) :
+                        .orElseThrow(() -> new SleepEntryNotFoundException("No sleep found for current user")) :
                 sortedDurations
                         .skip(history.size() / 2)
                         .findFirst().orElseThrow(() -> new SleepEntryNotFoundException("No sleep found for current user"));
