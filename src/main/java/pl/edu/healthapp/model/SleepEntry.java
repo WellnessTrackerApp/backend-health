@@ -37,6 +37,6 @@ public class SleepEntry {
     }
 
     public double durationInHours(){
-        return ChronoUnit.HOURS.between(sleepStart, sleepEnd);
+        return durationInMinutes() / 60.0;
     }
 }
